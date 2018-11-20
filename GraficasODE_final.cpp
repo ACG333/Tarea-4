@@ -1,0 +1,30 @@
+import sys
+import matplotlib
+import matplotlib.pyplot as plt
+from matplotlib import cm
+import numpy as np
+f=open("ode45.dat","r")
+x=[]
+y=[]
+n=int(f.readline().strip())
+for i in range(n):
+    aux=f.readline().strip().split()
+    if len(y)==0 or (i>=1 and y[-1]>0):
+        x.append(float(aux[0]))
+        y.append(float(aux[1]))
+fig1 = plt.figure()
+plt.plot(x,y)
+plt.savefig("angulo45.pdf")
+f=open("odeVarios.dat","r")
+n=int(f.readline().strip())
+fig2 = plt.figure()
+for i in range(7):
+    x=[]
+    y=[]
+    for i in range(n):
+        aux=f.readline().strip().split()
+        if len(y)==0 or (i>=1 and y[-1]>0):
+            x.append(float(aux[0]))
+            y.append(float(aux[1]))
+    plt.plot(x,y)
+plt.savefig("variosAngulos.pdf")
